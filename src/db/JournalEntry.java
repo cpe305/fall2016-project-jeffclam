@@ -4,7 +4,7 @@ public class JournalEntry implements Comparable<JournalEntry> {
 	
 	private int entryNumber;
 	
-	public JournaleEntry(int entry) {
+	public JournalEntry(int entry) {
 		entryNumber = entry;
 	}
 

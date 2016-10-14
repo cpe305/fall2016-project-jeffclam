@@ -1,6 +1,9 @@
 package userInterface;
 
+import java.util.ArrayList;
 import java.util.Collections;
+
+import db.JournalEntry;
 
 public class User {
 	private ArrayList<JournalEntry> journalEntries;
@@ -18,6 +21,6 @@ public class User {
 	}
 	
 	public void sort() {
-		Collections.sort(journalEntries, JournalCompare);
+		Collections.sort(journalEntries);
 	}
 }

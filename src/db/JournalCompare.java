@@ -1,5 +1,7 @@
 package db;
 
+import java.util.Comparator;
+
 public class JournalCompare implements Comparator<JournalEntry> {
 
 	@Override
