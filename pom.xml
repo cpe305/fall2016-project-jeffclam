@@ -6,4 +6,12 @@
   <name>TheraPC</name>
   <description>This program gives life advice to those in need of emotional support</description>
 
+  <dependencies>
+  	<dependency>
+  		<groupId>org.mongodb</groupId>
+  		<artifactId>mongodb-driver</artifactId>
+  		<version>3.3.0</version>
+  	</dependency>
+  </dependencies>
 </project>
+
