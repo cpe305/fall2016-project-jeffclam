@@ -24,7 +24,12 @@ public class Mood {
     // if negative == true it will return true and vice versa
     return this.negative;
   }
-
+  
+  public void setNegative(boolean negative) {
+    // if negative == true it will return true and vice versa
+    this.negative = negative;
+  }
+  
   public String getKeyword() {
     return this.keyword;
   }

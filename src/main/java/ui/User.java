@@ -1,9 +1,9 @@
 package ui;
 
+import db.JournalEntry;
+
 import java.util.ArrayList;
 import java.util.Collections;
-
-import db.JournalEntry;
 
 public class User {
   private ArrayList<JournalEntry> journalEntries;

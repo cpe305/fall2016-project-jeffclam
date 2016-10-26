@@ -22,8 +22,13 @@ public class MongoDb {
     db.getCollection("moods").insertOne(new Document("mood", new Document()
         .append("name", mood.getKeyword()).append("negative", String.valueOf(mood.isNegative()))));
   }
+  
+  //Checks if the mood is in the database by checking the keyword of the mood
+  public boolean find(Mood mood) {
+    return false;
+  }
 
-  /*
+  /**
    * This method prints all mood documents in collection.
    */
   public void printMoods() {

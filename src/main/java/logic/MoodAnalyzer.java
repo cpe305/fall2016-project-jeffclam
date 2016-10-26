@@ -9,28 +9,43 @@ public class MoodAnalyzer {
 
   public Mood mood;
   public MusicSelector song;
-  public ElasticSearch eSearch;
-  public CustomSearch cSearch;
+  public ElasticSearch elasticSearch;
+  public CustomSearch customSearch;
 
   public MoodAnalyzer(Mood mood) {
     this.mood = mood;
   }
 
+  /**
+   * Finds a song in the database to match the mood.
+   * @param mood reference from constructor
+   * @return the result of the search
+   */
   public String selectSong(Mood mood) {
     MusicSelector selector = new MusicSelector();
     selector.search(mood.getKeyword());
     return mood.getKeyword();
   }
 
+  /**
+   * Finds an answer in the database to match the mood.
+   * @param mood reference from constructor
+   * @return the result of the search
+   */
   public String elasticSearch(Mood mood) {
-    ElasticSearch eSearch = new ElasticSearch();
-    eSearch.search(mood.getKeyword());
+    elasticSearch = new ElasticSearch();
+    elasticSearch.search(mood.getKeyword());
     return mood.getKeyword();
   }
 
+  /**
+   * Finds an answer online to match the mood.
+   * @param mood reference from constructor
+   * @return the result of the search
+   */
   public String customSearch(Mood mood) {
-    CustomSearch cSearch = new CustomSearch();
-    cSearch.search(mood.getKeyword());
+    customSearch = new CustomSearch();
+    customSearch.search(mood.getKeyword());
     return mood.getKeyword();
   }
 }
