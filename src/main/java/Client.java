@@ -1,14 +1,15 @@
-import db.MongoDB;
-import userInterface.Mood;
+import db.MongoDb;
+import ui.Mood;
 
 import java.util.Scanner;
 
 public class Client {
   public static void main(String[] args) {
-    MongoDB database = new MongoDB();
+    MongoDb database = new MongoDb();
     Scanner user_input = new Scanner(System.in);
 
-    String emotion, input;
+    String emotion;
+    String input;
     boolean negative;
     Mood mood;
 

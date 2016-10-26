@@ -6,13 +6,14 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import userInterface.Mood;
+import ui.Mood;
 
-public class MongoDB {
+
+public class MongoDb {
   private MongoClient mongoClient;
   private MongoDatabase db;
 
-  public MongoDB() {
+  public MongoDb() {
     mongoClient = new MongoClient();
     db = mongoClient.getDatabase("test");
   }
@@ -22,6 +23,9 @@ public class MongoDB {
         .append("name", mood.getKeyword()).append("negative", String.valueOf(mood.isNegative()))));
   }
 
+  /*
+   * This method prints all mood documents in collection.
+   */
   public void printMoods() {
     FindIterable<Document> iterable = db.getCollection("moods").find();
     iterable.forEach(new Block<Document>() {
