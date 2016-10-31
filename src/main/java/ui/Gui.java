@@ -7,8 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
@@ -25,14 +23,10 @@ public class Gui extends Application {
     grid.setVgap(10);
     grid.setPadding(new Insets(25, 25, 25, 25));
 
-    final ImageView imv = new ImageView();
-    final Image image = new Image("/rsrc/calm.png", 200, 0, true, true);
-    imv.setImage(image);
-    final HBox pictureRegion = new HBox();
-    pictureRegion.getChildren().add(imv);
-    pictureRegion.setAlignment(Pos.CENTER);
-    GridPane.setHalignment(pictureRegion, HPos.CENTER);
-    grid.add(pictureRegion, 0, 0);
+    //Uploads the face of the mascot
+    Mascot doc = new Mascot();
+    GridPane.setHalignment(doc.getFace(), HPos.CENTER);
+    grid.add(doc.getFace(), 0, 0);
 
     Text scenetitle = new Text("Hello, user. How are you feeling today?");
     scenetitle.setFont(Font.font("Calibri", 20));
