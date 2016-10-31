@@ -1,4 +1,4 @@
-package ui;
+package db;
 
 import logic.MoodAnalyzer;
 

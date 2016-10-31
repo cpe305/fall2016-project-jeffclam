@@ -6,8 +6,6 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import ui.Mood;
-
 
 public class MongoDb {
   private MongoClient mongoClient;

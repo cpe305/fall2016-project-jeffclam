@@ -1,5 +1,7 @@
+package ui;
+
 import db.MongoDb;
-import ui.Mood;
+import db.Mood;
 
 import java.util.Scanner;
 

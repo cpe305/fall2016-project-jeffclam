@@ -1,6 +1,6 @@
 package logic;
 
-import ui.Mood;
+import db.Mood;
 
 public class MoodAnalyzer {
   /*
