@@ -20,23 +20,27 @@ public class Client {
     String emotion = userInput.next();
     Mood mood = new Mood(emotion);
     if (database.find(mood)) {
-    	
+      if (!mood.isNegative()) {
+        System.out.println("I'm happy to hear about that!");
+      } else {
+        System.out.println("I'm sorry to hear about that.");
+      }
     } else {
-	    //Check in the database if emotion exists, if not:
-	    
-	    System.out.println("I've never heard of that before. Is that good or bad?");
-	
-	    if (userInput.next().equalsIgnoreCase("good")) {
-	      mood.setNegative(false);
-	    } else {
-	      mood.setNegative(true);
-	    }
-	    
-	    if (!mood.isNegative()) {
-	      System.out.println("I'm happy to hear about that!");
-	    } else {
-	      System.out.println("I'm sorry to hear about that.");
-	    }
+      // Check in the database if emotion exists, if not:
+
+      System.out.println("I've never heard of that before. Is that good or bad?");
+
+      if (userInput.next().equalsIgnoreCase("good")) {
+        mood.setNegative(false);
+      } else {
+        mood.setNegative(true);
+      }
+
+      if (!mood.isNegative()) {
+        System.out.println("I'm happy to hear about that!");
+      } else {
+        System.out.println("I'm sorry to hear about that.");
+      }
     }
     // Get user input:
     userInput.close();
