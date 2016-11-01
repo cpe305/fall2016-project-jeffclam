@@ -1,5 +1,6 @@
 package ui;
 
+import db.Mood;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,7 +32,10 @@ public class Mascot {
     return imv;
   }
   
-  public String chooseFace() {
+  public String chooseFace(Mood mood) {
+    if (mood.isNegative()) {
+	  return "/rsrc/sad.png";
+	}
     return "/rsrc/calm.png";
   }
 }
