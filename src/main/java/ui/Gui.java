@@ -1,6 +1,5 @@
 package ui;
 
-import db.Mood;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -18,7 +17,6 @@ public class Gui extends Application {
 
   @Override
   public void start(Stage primaryStage) {
-	Mood mood = new Mood("start");
     GridPane grid = new GridPane();
     grid.setAlignment(Pos.CENTER);
     grid.setHgap(10);
@@ -27,8 +25,8 @@ public class Gui extends Application {
 
     //Uploads the face of the mascot
     Mascot doc = new Mascot();
-    GridPane.setHalignment(doc.getFace(mood), HPos.CENTER);
-    grid.add(doc.getFace(mood), 0, 0);
+    GridPane.setHalignment(doc.getFace(), HPos.CENTER);
+    grid.add(doc.getFace(), 0, 0);
 
     Text scenetitle = new Text("Hello, user. How are you feeling today?");
     scenetitle.setFont(Font.font("Calibri", 20));

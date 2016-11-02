@@ -40,7 +40,7 @@ public class Mascot {
 	  return "/rsrc/sad.png";
 	}
     else {
-      return "/rsrc/happy.png";
+       return "/rsrc/happy.png";
     }
   }
 }
