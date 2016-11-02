@@ -12,9 +12,9 @@ public class Mascot {
    * Sends face image back to the GUI.
    * @return ImageView file to be read by HBox in GUI
    */
-  public HBox getFace() {
+  public HBox getFace(Mood mood) {
     final HBox pictureRegion = new HBox();
-    pictureRegion.getChildren().add(updateFace());
+    pictureRegion.getChildren().add(updateFace(mood));
     pictureRegion.setAlignment(Pos.CENTER);
     return pictureRegion;
   }
@@ -23,8 +23,8 @@ public class Mascot {
    * Reads in the emotion and changes the face of the mascot accordingly. 
    * @return ImageView object of Image of mascot
    */
-  public ImageView updateFace() {
-    String faceFile = chooseFace();
+  public ImageView updateFace(Mood mood) {
+    String faceFile = chooseFace(mood);
     
     final ImageView imv = new ImageView();
     final Image image = new Image(faceFile, 200, 0, true, true);
@@ -33,9 +33,14 @@ public class Mascot {
   }
   
   public String chooseFace(Mood mood) {
-    if (mood.isNegative()) {
+    if ("start".equals(mood.getKeyword())) {
+      return "/rsrc/calm.png";
+    }
+	else if (mood.isNegative()) {
 	  return "/rsrc/sad.png";
 	}
-    return "/rsrc/calm.png";
+    else {
+      return "/rsrc/happy.png";
+    }
   }
 }
