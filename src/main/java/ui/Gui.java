@@ -26,7 +26,7 @@ public class Gui extends Application {
     grid.setPadding(new Insets(25, 25, 25, 25));
 
     //Uploads the face of the mascot
-    Mood defaultMood = new Mood("default", false);
+    Mood defaultMood = new Mood("start", false);
     Mascot mascot = new Mascot(defaultMood);
     GridPane.setHalignment(mascot.getFace(), HPos.CENTER);
     grid.add(mascot.getFace(), 0, 0);
