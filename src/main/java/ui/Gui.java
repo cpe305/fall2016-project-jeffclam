@@ -1,5 +1,6 @@
 package ui;
 
+import db.Mood;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -24,9 +25,10 @@ public class Gui extends Application {
     grid.setPadding(new Insets(25, 25, 25, 25));
 
     //Uploads the face of the mascot
-    Mascot doc = new Mascot();
-    GridPane.setHalignment(doc.getFace(), HPos.CENTER);
-    grid.add(doc.getFace(), 0, 0);
+    Mood defaultMood = new Mood("default", false);
+    Mascot mascot = new Mascot(defaultMood);
+    GridPane.setHalignment(mascot.getFace(), HPos.CENTER);
+    grid.add(mascot.getFace(), 0, 0);
 
     Text scenetitle = new Text("Hello, user. How are you feeling today?");
     scenetitle.setFont(Font.font("Calibri", 20));
@@ -47,6 +49,7 @@ public class Gui extends Application {
     Scene scene = new Scene(grid, 800, 600);
     primaryStage.setTitle("TheraPC");
     primaryStage.setScene(scene);
+    scene.getStylesheets().add(Gui.class.getResource("Style.css").toExternalForm());
     primaryStage.show();
   }
 

@@ -30,7 +30,7 @@ public class Client {
 
       System.out.println("I've never heard of that before. Is that good or bad?");
 
-      if (userInput.next().equalsIgnoreCase("good")) {
+      if ("good".equalsIgnoreCase(userInput.next())) {
         mood.setNegative(false);
       } else {
         mood.setNegative(true);
