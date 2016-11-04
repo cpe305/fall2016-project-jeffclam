@@ -18,8 +18,20 @@ public class Client {
 
     // Get user input:
     String emotion = userInput.next();
-    Mood mood = new Mood(emotion);
-    if (database.find(mood)) {
+    checkDatabase(userInput, emotion, database);
+    // Get user input:
+    userInput.close();
+  }
+  
+  /**
+   * Checks the database for the emotion stated. If non-existent, add it in.
+   * @param userInput scanner for input
+   * @param emotion emotion to compare with moods
+   * @param database reference to database
+   */
+  public static void checkDatabase(Scanner userInput, String emotion, MongoDb database) {
+    Mood mood = database.find(emotion);
+    if (mood != null) {
       if (!mood.isNegative()) {
         System.out.println("I'm happy to hear about that!");
       } else {
@@ -27,24 +39,21 @@ public class Client {
       }
     } else {
       // Check in the database if emotion exists, if not:
-
+  
       System.out.println("I've never heard of that before. Is that good or bad?");
-
+      mood = new Mood(emotion);
       if ("good".equalsIgnoreCase(userInput.next())) {
         mood.setNegative(false);
       } else {
         mood.setNegative(true);
       }
-
+      database.addMood(mood);
+  
       if (!mood.isNegative()) {
         System.out.println("I'm happy to hear about that!");
       } else {
         System.out.println("I'm sorry to hear about that.");
       }
     }
-    // Get user input:
-    userInput.close();
-    database.addMood(mood);
-    database.printMoods();
   }
 }
