@@ -13,6 +13,7 @@ import java.util.logging.Logger;
 public class MongoDb {
   private MongoClient mongoClient;
   private MongoDatabase db;
+  Logger mongoLogger;
 
   /**
    * Initializes database.
@@ -20,7 +21,7 @@ public class MongoDb {
   public MongoDb() {
     mongoClient = new MongoClient();
     db = mongoClient.getDatabase("test");
-    Logger mongoLogger = Logger.getLogger("org.mongodb.driver");;
+    mongoLogger = Logger.getLogger("org.mongodb.driver");
     mongoLogger.setLevel(Level.SEVERE);
   }
 
@@ -58,7 +59,7 @@ public class MongoDb {
     iterable.forEach(new Block<Document>() {
       @Override
       public void apply(final Document document) {
-        System.out.println(document);
+        mongoLogger.log(Level.INFO, document.toString());
       }
     });
   }

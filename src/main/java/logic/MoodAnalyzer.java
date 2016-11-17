@@ -3,18 +3,9 @@ package logic;
 import db.Mood;
 
 public class MoodAnalyzer {
-  /*
-   * Signed: Jason Ismail CPE 305 for Jeffrey Lam
-   */
-
-  public Mood mood;
-  public MusicSelector song;
-  public ElasticSearch elasticSearch;
-  public CustomSearch customSearch;
-
-  public MoodAnalyzer(Mood mood) {
-    this.mood = mood;
-  }
+  private SongSearch songSearch;
+  private ElasticSearch elasticSearch;
+  private CustomSearch customSearch;
 
   /**
    * Finds a song in the database to match the mood.
@@ -22,8 +13,8 @@ public class MoodAnalyzer {
    * @return the result of the search
    */
   public String selectSong(Mood mood) {
-    MusicSelector selector = new MusicSelector();
-    selector.search(mood.getKeyword());
+    songSearch = new SongSearch();
+    songSearch.search(mood.getKeyword());
     return mood.getKeyword();
   }
 

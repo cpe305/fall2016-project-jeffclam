@@ -1,15 +1,8 @@
 package db;
 
-import logic.MoodAnalyzer;
-
 public class Mood {
-  /*
-   * Signed: Jason Ismail CPE 305 for Jeffrey Lam
-   */
-
   private boolean negative;
   private String keyword;
-  public MoodAnalyzer analysis;
 
   public Mood(String keyword) {
     this.keyword = keyword;

@@ -1,9 +1,12 @@
 package ui;
 
+import com.mongodb.MongoException;
+
 import db.MongoDb;
 import db.Mood;
 
 import java.util.Scanner;
+
 
 public class Client {
   /**
@@ -18,7 +21,11 @@ public class Client {
 
     // Get user input:
     String emotion = userInput.next();
-    checkDatabase(userInput, emotion, database);
+    try {
+      checkDatabase(userInput, emotion, database);
+    } catch (MongoException connection) {
+      System.out.println("No connection");
+    }
     // Get user input:
     userInput.close();
   }

@@ -1,7 +1,7 @@
 package logic;
 
-public class MusicSelector {
-  public MusicSelector() {
+public class SongSearch {
+  public SongSearch() {
 
   }
 

@@ -22,6 +22,9 @@
 
 
    <build>
+      <sourceDirectory>src/main/java</sourceDirectory>
+      <testSourceDirectory>src/test/java</testSourceDirectory>   
+         
       <plugins>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -37,6 +40,7 @@
 		        </archive>
 		      </configuration>
          </plugin>
+         
 			<plugin>
 			   <groupId>com.zenjava</groupId>
 			   <artifactId>javafx-maven-plugin</artifactId>
@@ -45,24 +49,39 @@
 			      <mainClass></mainClass>
 			   </configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.2</version>
-            </plugin>
+			
+          <plugin>
+             <groupId>org.sonarsource.scanner.maven</groupId>
+             <artifactId>sonar-maven-plugin</artifactId>
+             <version>3.2</version>           
+          </plugin>
       </plugins>
    </build>
 
   <dependencies>
+  
   	<dependency>
   		<groupId>org.mongodb</groupId>
   		<artifactId>mongodb-driver</artifactId>
   		<version>3.3.0</version>
   	</dependency>
+  	
   	<dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   		<version>4.8.2</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>org.elasticsearch.client</groupId>
+  		<artifactId>transport</artifactId>
+  		<version>5.0.0</version>
+  	</dependency>
+  	
+  	<dependency>
+  		<groupId>com.google.apis</groupId>
+  		<artifactId>google-api-services-customsearch</artifactId>
+  		<version>v1-rev51-1.22.0</version>
   	</dependency>
   </dependencies>
   
