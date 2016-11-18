@@ -2,6 +2,7 @@ package db;
 
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 
@@ -19,8 +20,9 @@ public class MongoDb {
    * Initializes database.
    */
   public MongoDb() {
-    mongoClient = new MongoClient();
-    db = mongoClient.getDatabase("test");
+    mongoClient = new MongoClient(
+        new MongoClientURI("mongodb://admin:admin@ds157187.mlab.com:57187/theradb"));
+    db = mongoClient.getDatabase("theradb");
     mongoLogger = Logger.getLogger("org.mongodb.driver");
     mongoLogger.setLevel(Level.SEVERE);
   }

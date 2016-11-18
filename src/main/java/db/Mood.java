@@ -1,6 +1,6 @@
 package db;
 
-public class Mood {
+public class Mood extends DbObject {
   private boolean negative;
   private String keyword;
 
@@ -31,4 +31,10 @@ public class Mood {
     this.keyword = newKey;
   }
 
+  @Override
+  public String toString() {
+    String result = keyword + " is ";
+    result += isNegative() ? "negative" : "positive";
+    return result;
+  }
 }

@@ -22,4 +22,13 @@ public class Problem {
   public void setStatement(String statement) {
     this.statement = statement;
   }
+  
+  /**
+   * Goes through the statement and returns the keywords.
+   */
+  public void printKeywords() {
+    for (String k : getKeywords()) {
+      System.out.println(k);
+    }
+  }
 }

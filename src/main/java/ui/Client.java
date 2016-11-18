@@ -26,7 +26,9 @@ public class Client {
     } catch (MongoException connection) {
       System.out.println("No connection");
     }
-    // Get user input:
+    System.out.println("What kind of problem are you facing?");
+    Problem problem = new Problem(userInput.nextLine());
+    problem.getKeywords();
     userInput.close();
   }
   
@@ -62,5 +64,6 @@ public class Client {
         System.out.println("I'm sorry to hear about that.");
       }
     }
+    userInput.nextLine();
   }
 }
