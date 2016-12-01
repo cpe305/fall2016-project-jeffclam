@@ -16,7 +16,7 @@ public class TheraPc extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("/Gui.fxml"));
     Scene scene = new Scene(root, 800, 600);
     
     stage.setTitle("TheraPC");
@@ -36,7 +36,8 @@ public class TheraPc extends Application {
    * @param emotion emotion to compare with moods
    */
   public static Mood checkDatabase(String emotion) {
-    Mood mood = database.find(emotion);
+    Mood mood = new Mood(emotion);
+    mood = manager.find(mood);
     if (mood != null) {
       return mood;
     } else {      

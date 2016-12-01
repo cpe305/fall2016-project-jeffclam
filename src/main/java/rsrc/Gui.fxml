@@ -19,7 +19,7 @@
 		<children>
 			<ImageView fx:id="mascot" fitHeight="237.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true">
 				<image>
-					<Image url="@../calm.png" />
+					<Image url="@calm.png" />
 				</image>
 				<HBox.margin>
 					<Insets />

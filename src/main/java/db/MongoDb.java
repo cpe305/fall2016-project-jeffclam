@@ -27,11 +27,6 @@ public class MongoDb {
     mongoLogger.setLevel(Level.SEVERE);
   }
 
-  public void addMood(Mood mood) {
-    db.getCollection("moods").insertOne(new Document("mood", new Document()
-        .append("name", mood.getName()).append("negative", String.valueOf(mood.isNegative()))));
-  }
-
   /**
    * Checks to see if the mood is in the database.
    * @param emotion Mood to be compared
@@ -41,7 +36,7 @@ public class MongoDb {
     final Mood mood = new Mood(emotion);
     
     FindIterable<Document> iterable = db.getCollection("moods")
-        .find(new Document("name", mood.getName()));
+        .find(new Document("mood.name", mood.getName()));
     
     if (iterable.first() == null) {
       return null;

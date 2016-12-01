@@ -1,18 +1,28 @@
 package db;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.utils.IndexType;
 
 @Entity("moods")
+@Indexes(@Index(fields = @Field(value = "$**", type = IndexType.TEXT)))
 public class Mood {
-  private String name;
+  @Id
+  private ObjectId id;
+  private String value;
+  private String category;
   private boolean negative;
 
   public Mood(String keyword) {
-    this.name = keyword;
+    this.value = keyword;
   }
 
   public Mood(String keyword, boolean negative) {
-    this.name = keyword;
+    this.value = keyword;
     this.negative = negative;
   }
 
@@ -27,17 +37,25 @@ public class Mood {
   }
   
   public String getName() {
-    return this.name;
+    return this.value;
   }
 
   public void setName(String newKey) {
-    this.name = newKey;
+    this.value = newKey;
   }
 
   @Override
   public String toString() {
-    String result = name + " is ";
+    String result = value + " is ";
     result += isNegative() ? "negative" : "positive";
     return result;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
   }
 }
