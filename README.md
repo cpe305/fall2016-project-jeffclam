@@ -3,6 +3,9 @@
 
 Welcome to TheraPC!  TheraPC is a program that accepts your current emotion and personal problem to return a song to listen to and resources it finds helpful.
 
+## How to Download and Execute TheraPC
+Coming soon...
+
 ## Documentation can be found on:
 https://cpe305.github.io/fall2016-project-jeffclam/
 
