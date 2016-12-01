@@ -1,6 +1,6 @@
 package db;
 
-public class Song extends DbObject {
+public class Song {
   private String artist;
   private String songName;
   

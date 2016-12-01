@@ -14,8 +14,8 @@ public class MoodAnalyzer {
    */
   public String selectSong(Mood mood) {
     songSearch = new SongSearch();
-    songSearch.search(mood.getKeyword());
-    return mood.getKeyword();
+    songSearch.search(mood);
+    return mood.getName();
   }
 
   /**
@@ -25,8 +25,8 @@ public class MoodAnalyzer {
    */
   public String elasticSearch(Mood mood) {
     elasticSearch = new ElasticSearch();
-    elasticSearch.search(mood.getKeyword());
-    return mood.getKeyword();
+    elasticSearch.search(mood);
+    return mood.getName();
   }
 
   /**
@@ -36,7 +36,7 @@ public class MoodAnalyzer {
    */
   public String customSearch(Mood mood) {
     customSearch = new CustomSearch();
-    customSearch.search(mood.getKeyword());
-    return mood.getKeyword();
+    customSearch.search(mood);
+    return mood.getName();
   }
 }

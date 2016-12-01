@@ -29,7 +29,7 @@ public class MongoDb {
 
   public void addMood(Mood mood) {
     db.getCollection("moods").insertOne(new Document("mood", new Document()
-        .append("name", mood.getKeyword()).append("negative", String.valueOf(mood.isNegative()))));
+        .append("name", mood.getName()).append("negative", String.valueOf(mood.isNegative()))));
   }
 
   /**
@@ -41,7 +41,7 @@ public class MongoDb {
     final Mood mood = new Mood(emotion);
     
     FindIterable<Document> iterable = db.getCollection("moods")
-        .find(new Document("mood.name", mood.getKeyword()));
+        .find(new Document("name", mood.getName()));
     
     if (iterable.first() == null) {
       return null;
@@ -64,5 +64,13 @@ public class MongoDb {
         mongoLogger.log(Level.INFO, document.toString());
       }
     });
+  }
+
+  public MongoClient getMongoClient() {
+    return mongoClient;
+  }
+
+  public void setMongoClient(MongoClient mongoClient) {
+    this.mongoClient = mongoClient;
   }
 }

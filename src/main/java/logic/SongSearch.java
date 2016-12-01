@@ -1,5 +1,7 @@
 package logic;
 
+import db.Mood;
+
 import java.util.ArrayList;
 
 public class SongSearch implements Search {
@@ -7,8 +9,7 @@ public class SongSearch implements Search {
 
   }
 
-  public void search(String keyword) {
-    System.out.println(keyword);
+  public void search(Mood mood) {
   }
 
   @Override

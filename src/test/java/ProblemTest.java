@@ -1,8 +1,7 @@
 import static org.junit.Assert.assertEquals;
 
+import db.Problem;
 import org.junit.Test;
-
-import ui.Problem;
 
 import java.util.ArrayList;
 

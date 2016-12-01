@@ -83,6 +83,11 @@
   		<artifactId>google-api-services-customsearch</artifactId>
   		<version>v1-rev51-1.22.0</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.mongodb.morphia</groupId>
+  		<artifactId>morphia</artifactId>
+  		<version>1.3.0</version>
+  	</dependency>
   </dependencies>
   
 </project>

@@ -1,15 +1,18 @@
 package db;
 
-public class Mood extends DbObject {
+import org.mongodb.morphia.annotations.Entity;
+
+@Entity("moods")
+public class Mood {
+  private String name;
   private boolean negative;
-  private String keyword;
 
   public Mood(String keyword) {
-    this.keyword = keyword;
+    this.name = keyword;
   }
 
   public Mood(String keyword, boolean negative) {
-    this.keyword = keyword;
+    this.name = keyword;
     this.negative = negative;
   }
 
@@ -23,17 +26,17 @@ public class Mood extends DbObject {
     this.negative = negative;
   }
   
-  public String getKeyword() {
-    return this.keyword;
+  public String getName() {
+    return this.name;
   }
 
-  public void setKeyword(String newKey) {
-    this.keyword = newKey;
+  public void setName(String newKey) {
+    this.name = newKey;
   }
 
   @Override
   public String toString() {
-    String result = keyword + " is ";
+    String result = name + " is ";
     result += isNegative() ? "negative" : "positive";
     return result;
   }
