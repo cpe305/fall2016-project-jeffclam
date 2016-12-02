@@ -1,6 +1,7 @@
 package ui;
 
 import db.Mood;
+import db.Problem;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ public class MainController {
   private boolean isTalkative;
   private PromptController prompt;
   private ResultController result;
+  private Problem problem;
   
   @FXML 
   protected void handleSubmitButtonAction(ActionEvent event) throws IOException {
@@ -124,6 +126,15 @@ public class MainController {
     } else {
       return "I'm glad to hear that! Anything I can help with?";
     }
+  }
+
+  public Problem getProblem() {
+    return problem;
+  }
+
+  public void setProblem(Problem problem) throws IOException {
+    this.problem = problem;
+    result = launchResult();
   }
   
 }
