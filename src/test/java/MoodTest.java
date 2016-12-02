@@ -9,7 +9,7 @@ public class MoodTest {
   @Test
   public void testMoodStringBoolean() {
     Mood mood = new Mood("test", false);
-    assertEquals("test", mood.getName());
+    assertEquals("test", mood.getKeyword());
     assertEquals(false, mood.isNegative());
   }
 

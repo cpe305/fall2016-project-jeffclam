@@ -1,6 +1,8 @@
 package logic;
 
-import db.Mood;
+import db.Problem;
+
+import java.util.ArrayList;
 
 public class MoodAnalyzer {
   private SongSearch songSearch;
@@ -9,34 +11,34 @@ public class MoodAnalyzer {
 
   /**
    * Finds a song in the database to match the mood.
-   * @param mood reference from constructor
+   * @param problem reference from constructor
    * @return the result of the search
    */
-  public String selectSong(Mood mood) {
+  public ArrayList<String> selectSong(Problem problem) {
     songSearch = new SongSearch();
-    songSearch.search(mood);
-    return mood.getName();
+    songSearch.search(problem);
+    return problem.getKeywords();
   }
 
   /**
    * Finds an answer in the database to match the mood.
-   * @param mood reference from constructor
+   * @param problem reference from constructor
    * @return the result of the search
    */
-  public String elasticSearch(Mood mood) {
+  public ArrayList<String> elasticSearch(Problem problem) {
     elasticSearch = new ElasticSearch();
-    elasticSearch.search(mood);
-    return mood.getName();
+    elasticSearch.search(problem);
+    return problem.getKeywords();
   }
 
   /**
    * Finds an answer online to match the mood.
-   * @param mood reference from constructor
+   * @param problem reference from constructor
    * @return the result of the search
    */
-  public String customSearch(Mood mood) {
+  public ArrayList<String> customSearch(Problem problem) {
     customSearch = new CustomSearch();
-    customSearch.search(mood);
-    return mood.getName();
+    customSearch.search(problem);
+    return problem.getKeywords();
   }
 }

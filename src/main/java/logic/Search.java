@@ -1,11 +1,11 @@
 package logic;
 
-import db.Mood;
+import db.Problem;
 
 import java.util.ArrayList;
 
 public interface Search {
-  void search(Mood mood);
+  void search(Problem problem);
   
   void search(ArrayList<String> keywords);
   

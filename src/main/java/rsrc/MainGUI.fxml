@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,10 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<GridPane alignment="center" hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@Style.css" vgap="5.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+<GridPane alignment="center" hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" stylesheets="@Style.css" vgap="5.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
 	
 	<HBox alignment="CENTER">
 		<children>
@@ -29,14 +29,16 @@
 	</HBox>
 	
 	<TextFlow textAlignment="CENTER" GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
-		<children>
-
-			<Text text="Hello, friend. How are you feeling?" textAlignment="CENTER" wrappingWidth="227.5048828125">
-				<font>
-					<Font name="Calibri" size="20.0" />
-				</font>
-			</Text>
-		</children>
+      <children>
+         <Label fx:id="hardText" text="Hello, friend. How are you feeling?">
+            <font>
+               <Font name="Calibri" size="20.0" />
+            </font>
+         </Label>
+      </children>
+      <GridPane.margin>
+         <Insets bottom="15.0" />
+      </GridPane.margin>
 	</TextFlow>
 
 	<TextField fx:id="userInput" promptText="I'm feeling _____" GridPane.columnSpan="2147483647" GridPane.rowIndex="3">
@@ -47,6 +49,9 @@
 		<children>
 			<Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Submit" />
 		</children>
+      <GridPane.margin>
+         <Insets top="15.0" />
+      </GridPane.margin>
 	</HBox>
 	
 	<columnConstraints>

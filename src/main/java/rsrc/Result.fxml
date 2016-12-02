@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@Style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.ResultController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="282.0" minHeight="10.0" prefHeight="241.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="75.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="81.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="116.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="225.0" minHeight="10.0" prefHeight="225.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="248.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@calm.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <TextField alignment="CENTER" editable="false" prefHeight="31.0" prefWidth="290.0" />
+         </children>
+      </HBox>
+      <ScrollPane GridPane.rowIndex="4">
+         <content>
+            <WebView prefHeight="384.0" prefWidth="781.0" />
+         </content>
+      </ScrollPane>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="800.0" GridPane.rowIndex="1">
+         <children>
+            <Label prefHeight="0.0" prefWidth="232.0" text="Here is a song I recommend:">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="14.0" prefWidth="640.0" GridPane.rowIndex="3">
+         <children>
+            <Label text="Here are some resources for you:">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</GridPane>

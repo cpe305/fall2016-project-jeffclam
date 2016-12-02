@@ -1,44 +1,66 @@
 package db;
 
-import com.mongodb.MongoClient;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-
-import java.util.List;
+import com.mongodb.client.FindIterable;
+import org.bson.Document;
 
 public class DbManager {
-  final Morphia morphia = new Morphia();
-  final Datastore datastore;
+  final MongoDb database;
   
   /**
    * Setting up database manager for MongoDB objects for easier java compatibility.
-   * @param mc reference to existing running client
    */
-  public DbManager(MongoClient mc) {
-    morphia.mapPackage("com.db");
-    datastore = morphia.createDatastore(mc, "theradb");
-    datastore.ensureIndexes();
-  }
-  
-  public void saveMood(Mood mood) {
-    datastore.save(mood);
+  public DbManager() {
+    database = new MongoDb();
   }
   
   /**
-   * Checks if mood is in the database and returns it.
-   * @param mood Mood to find in database.
-   * @return If not in database, return null.
+   * Checks the database for the emotion stated. If non-existent, add it in.
+   * @param emotion emotion to compare with moods
    */
-  public Mood find(Mood mood) {
-    List<Mood> moods = datastore.createQuery(Mood.class)
-                              .search(mood.getName())
-                              .order("_id")
-                              .asList();
-    if (moods.isEmpty()) {
+  public Mood checkDatabase(String emotion) {
+    Mood mood = new Mood(emotion);
+    
+    mood = find(mood);
+    
+    if (mood != null) {
+      return mood;
+    } else {      
+      System.out.println("I've never heard of that before.");
+      mood = new Mood(emotion, true);
+      mood.setCategory("sad");
+      add(mood);
+      
+      return mood;
+    }    
+  }
+  
+  /**
+   * Add's a new mood into the moods collection.
+   * @param mood new mood to add to the database
+   */
+  public void add(Mood mood) {
+    Document document = new Document("mood", mood.getKeyword())
+                                  .append("category", mood.getCategory())
+                                  .append("negative", mood.isNegative());
+    database.getCollection("moods").insertOne(document);
+  }
+  
+  /**
+   * Checks to see if the mood is in the database.
+   * @param mood Mood to be compared
+   * @return if found, true
+   */
+  public Mood find(Mood mood) {    
+    FindIterable<Document> iterable = database.getCollection("moods")
+        .find(new Document("mood", mood.getKeyword()));
+    
+    if (iterable.first() == null) {
       return null;
     } else {
-      return moods.get(0);
+      mood.setCategory(iterable.first().getString("category"));
+      mood.setNegative(iterable.first().getBoolean("negative"));
     }
-      
+    
+    return mood;
   }
 }

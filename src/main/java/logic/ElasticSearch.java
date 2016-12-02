@@ -1,6 +1,6 @@
 package logic;
 
-import db.Mood;
+import db.Problem;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class ElasticSearch implements Search {
 
   }
 
-  public void search(Mood mood) {
+  public void search(Problem problem) {
   }
 
   @Override
