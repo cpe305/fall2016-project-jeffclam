@@ -1,6 +1,8 @@
 package db;
 
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.model.Filters;
+
 import org.bson.Document;
 
 public class DbManager {
@@ -41,6 +43,17 @@ public class DbManager {
   }
   
   /**
+   * Add's a new mood into the moods collection.
+   * @param song new song to add to the database
+   */
+  public void add(Song song) {
+    Document document = new Document("artist", song.getArtist())
+                                  .append("song_name", song.getSongName())
+                                  .append("negative", song.isNegative());
+    database.getCollection("songs").insertOne(document);
+  }
+  
+  /**
    * Checks to see if the mood is in the database.
    * @param mood Mood to be compared
    * @return if found, true
@@ -57,5 +70,18 @@ public class DbManager {
     }
     
     return mood;
+  }
+  
+  /**
+   * Returns a song.
+   * @param isNegative emotion
+   * @return a song
+   */
+  public Song find(boolean isNegative) {
+    FindIterable<Document> iterable = database.getCollection("songs")
+        .find(Filters.all("negative", isNegative));
+    Song song = new Song(iterable.first().getString("artist"), 
+        iterable.first().getString("song_name"));
+    return song;
   }
 }

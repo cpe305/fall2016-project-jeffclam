@@ -8,8 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class AddMoodController extends CustomController {
   @FXML private Button goodButton;
   @FXML private Button badButton;
@@ -17,7 +15,7 @@ public class AddMoodController extends CustomController {
   private Mood mood;
   
   @FXML 
-  protected void handleGood(ActionEvent event) throws IOException {
+  protected void handleGood(ActionEvent event) throws Exception {
     mood.setNegative(false);
     TheraPc.manager.add(mood);
     main.reactToMood(mood);
@@ -25,7 +23,7 @@ public class AddMoodController extends CustomController {
   }
   
   @FXML 
-  protected void handleBad(ActionEvent event) throws IOException {
+  protected void handleBad(ActionEvent event) throws Exception {
     mood.setNegative(true);
     TheraPc.manager.add(mood);
     main.reactToMood(mood);

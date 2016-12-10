@@ -12,7 +12,7 @@ public class PromptController extends CustomController {
   @FXML private Button noButton;
   
   @FXML 
-  protected void handleYes(ActionEvent event) throws IOException {
+  protected void handleYes(ActionEvent event) throws Exception {
     main.isTalkative();
     closeWindow();
   }

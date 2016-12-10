@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class InputController extends CustomController {
   @FXML private Button submit;
   @FXML private Button clear;
@@ -16,7 +14,7 @@ public class InputController extends CustomController {
   @FXML private TextArea input;
   
   @FXML 
-  protected void handleSubmit(ActionEvent event) throws IOException {
+  protected void handleSubmit(ActionEvent event) throws Exception {
     Problem problem = new Problem(input.getText());
     main.setProblem(problem);
     Stage stage = (Stage) submit.getScene().getWindow();

@@ -3,6 +3,7 @@ package db;
 public class Song {
   private String artist;
   private String songName;
+  private boolean isNegative;
   
   public Song(String artist, String songName) {
     this.artist = artist;
@@ -27,6 +28,14 @@ public class Song {
   
   @Override
   public String toString() {
-    return artist + " " + songName;
+    return artist + " - " + songName;
+  }
+
+  public boolean isNegative() {
+    return isNegative;
+  }
+
+  public void setNegative(boolean isNegative) {
+    this.isNegative = isNegative;
   }
 }
