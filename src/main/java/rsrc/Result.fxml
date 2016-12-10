@@ -35,12 +35,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <TextField alignment="CENTER" editable="false" prefHeight="31.0" prefWidth="290.0" />
+            <TextField fx:id="song" alignment="CENTER" editable="false" prefHeight="31.0" prefWidth="290.0" />
          </children>
       </HBox>
       <ScrollPane GridPane.rowIndex="4">
          <content>
-            <WebView prefHeight="384.0" prefWidth="781.0" />
+            <WebView fx:id="web" prefHeight="384.0" prefWidth="781.0" />
          </content>
       </ScrollPane>
       <HBox alignment="CENTER" prefHeight="40.0" prefWidth="800.0" GridPane.rowIndex="1">

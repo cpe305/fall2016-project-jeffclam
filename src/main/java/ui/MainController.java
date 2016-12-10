@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -24,18 +23,35 @@ public class MainController {
   @FXML private TextField userInput;
   @FXML private Button submitButton;
   @FXML private ImageView mascot;
-  private boolean isTalkative;
+  private InputController input;
   private PromptController prompt;
-  private ResultController result;
+  private AddMoodController addMood;
   private Problem problem;
   
   @FXML 
   protected void handleSubmitButtonAction(ActionEvent event) throws IOException {
     Mood mood = TheraPc.manager.checkDatabase(userInput.getText());
-    mascot.setImage(new Image(chooseFace(mood),200, 0, true, true));
-    hardText.setText(chooseResponse(mood));
-    prompt = launchPrompt();
-    prompt.setCommunication(this);
+    if (mood == null) {
+      addMood = launchAddMood();
+      addMood.setCommunication(this);
+      addMood.setMood(userInput.getText());
+    } else {
+      reactToMood(mood);
+    }
+  }
+  
+  /**
+   * Depending on the mood, will react accordingly.
+   * @param mood Reference to mood
+   * @throws IOException exception for reading file.
+   */
+  public void reactToMood(Mood mood) throws IOException {
+    if (mood.isNegative()) {
+      prompt = launchPrompt();
+      prompt.setCommunication(this);
+    } else {
+      launchGood();
+    }
   }
   
   /**
@@ -75,7 +91,7 @@ public class MainController {
    * @return instance of the controller.
    * @throws IOException Exception for loading fxml.
    */
-  public ResultController launchResult() throws IOException {
+  public ResultController launchResult(Problem problem) throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Result.fxml"));
     Parent root = loader.load();
     Stage stage = new Stage();
@@ -88,40 +104,51 @@ public class MainController {
       }
       
     }));
-    ResultController controller = loader.<ResultController>getController();
-    return controller;
+    return loader.<ResultController>getController();
   }
   
-  public boolean getIsTalkative() {
-    return isTalkative;
+  /**
+   * Launches new prompt to add new mood into database.
+   * @return instance of controller.
+   * @throws IOException error in loading fxml.
+   */
+  public AddMoodController launchAddMood() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddMood.fxml"));
+    Parent root = loader.load();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root, 400, 280));
+    stage.show();
+    return loader.<AddMoodController>getController();
+  }
+  
+  /**
+   * Launches new prompt for good mood.
+   * @return instance of controller
+   * @throws IOException exception for loading fxml file.
+   */
+  public GoodController launchGood() throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Good.fxml"));
+    Parent root = loader.load();
+    Stage stage = new Stage();
+    stage.setScene(new Scene(root, 800, 600));
+    stage.show();
+    stage.setOnCloseRequest((new EventHandler<WindowEvent>() {
+      @Override
+      public void handle(WindowEvent arg0) {
+        Platform.exit();
+      }
+      
+    }));
+    return loader.<GoodController>getController();
   }
   
   /**
    * If talkative, will launch into user input. If not, return to main scene.
-   * @param isTalkative Whether user is willing to talk or not.
    * @throws IOException Throws for fxml load fail.
    */
-  public void setIsTalkative(boolean isTalkative) throws IOException {
-    this.isTalkative = isTalkative;
-    InputController input = null;
-    if (isTalkative) {
-      input = launchInput();
-    }
-    if (input != null) {
-      input.setCommunication(this);
-    }
-  }
-  
-  /**
-   * Returns the file location of the correct image to use.
-   * @return File location of image
-   */
-  public String chooseFace(Mood mood) {
-    if (mood.isNegative()) {
-      return "sad.png";
-    } else {
-      return "happy.png";
-    }
+  public void isTalkative() throws IOException {
+    input = launchInput();
+    input.setCommunication(this);
   }
   
   /**
@@ -142,8 +169,7 @@ public class MainController {
   }
 
   public void setProblem(Problem problem) throws IOException {
-    this.problem = problem;
-    result = launchResult();
+    launchResult(problem);
   }
   
 }

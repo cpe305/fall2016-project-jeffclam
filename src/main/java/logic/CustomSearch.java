@@ -5,10 +5,14 @@ import db.Problem;
 import java.util.ArrayList;
 
 public class CustomSearch implements Search {
+  /*
   public CustomSearch() {
-
+    HttpTransport transport = new NetHttpTransport();
+    JsonFactory jsonFactory = new JacksonFactory();
+    CustomsearchRequestInitializer requestInitializer = 
+        new CustomsearchRequestInitializer("AIzaSyBLmjWiSEVKtgxjCPxjQIiqXj9ZCEmQBjs");
   }
-
+   */
   public void search(Problem problem) {
 
   }

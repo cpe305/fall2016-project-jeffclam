@@ -13,13 +13,12 @@ public class PromptController extends CustomController {
   
   @FXML 
   protected void handleYes(ActionEvent event) throws IOException {
-    main.setIsTalkative(true);
+    main.isTalkative();
     closeWindow();
   }
   
   @FXML 
   protected void handleNo(ActionEvent event) throws IOException {
-    main.setIsTalkative(false);
     closeWindow();
   }
   

@@ -25,12 +25,7 @@ public class DbManager {
     if (mood != null) {
       return mood;
     } else {      
-      System.out.println("I've never heard of that before.");
-      mood = new Mood(emotion, true);
-      mood.setCategory("sad");
-      add(mood);
-      
-      return mood;
+      return null;
     }    
   }
   

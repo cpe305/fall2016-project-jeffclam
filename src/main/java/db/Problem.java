@@ -27,8 +27,10 @@ public class Problem {
       if (pronouns.get(keywords.get(i)) != null) {
         if (pronouns.get(keywords.get(i)) != "self") {
           selfPronouns.add(keywords.get(i));
-          keywords.remove(i);
+        } else {
+          otherPronouns.add(keywords.get(i));
         }
+        keywords.remove(i);
       }
     }
     return keywords;
