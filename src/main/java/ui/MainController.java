@@ -44,7 +44,7 @@ public class MainController {
       prompt.setCommunication(this);
     } else {
       ((GoodController) factory.launch("good"))
-        .setText(TheraPc.manager.find(mood.isNegative()).toString());;
+        .setText(TheraPc.manager.find(mood.isNegative()).toString());
     }
   }
   
