@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.web.WebEngine;
 
 public class MainController {
   @FXML private Label hardText;
@@ -18,6 +19,7 @@ public class MainController {
   private InputController input;
   private PromptController prompt;
   private AddMoodController addMood;
+  private ResultController result;
   private Problem problem;
   private Mood mood;
 
@@ -74,9 +76,22 @@ public class MainController {
     return problem;
   }
 
+  /**
+   * Sets problem to return a result in the Result GUI.
+   * @param problem Takes the problem object created by InputController
+   */
   public void setProblem(Problem problem) throws Exception {
-    ((ResultController) factory.launch("result"))
-      .setText(TheraPc.manager.find(mood.isNegative()).toString());
+    String searchInput;
+    result = (ResultController) factory.launch("result");
+    result.setText(TheraPc.manager.find(mood.isNegative()).toString());
+    WebEngine webEngine = result.web.getEngine();
+    if (problem != null) {
+      searchInput = mood.getKeyword() + "+" + problem.getSearchString();
+      System.out.println(searchInput);
+      webEngine.load("http://www.google.com/search?q=" + searchInput);
+    } else {
+      webEngine.load("http://www.google.com");
+    }
   }
   
   public Mood getMood() {
