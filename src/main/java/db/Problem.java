@@ -6,8 +6,8 @@ import java.util.TreeMap;
 
 public class Problem {
   private String statement;
-  private ArrayList<String> selfPronouns;
-  private ArrayList<String> otherPronouns;
+  //private ArrayList<String> selfPronouns;
+  //private ArrayList<String> otherPronouns;
   private ArrayList<String> keywords;
   private TreeMap<String, String> pronouns = 
       new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
@@ -23,6 +23,7 @@ public class Problem {
    */
   public ArrayList<String> getKeywords() {
     keywords = new ArrayList<String>(Arrays.asList(statement.split(" ")));
+    /*
     for (int i = 0; i < keywords.size(); i++) {
       if (pronouns.get(keywords.get(i)) != null) {
         if (pronouns.get(keywords.get(i)) != "self") {
@@ -33,6 +34,7 @@ public class Problem {
         keywords.remove(i);
       }
     }
+     */
     return keywords;
   }
 
@@ -51,6 +53,24 @@ public class Problem {
     for (String k : getKeywords()) {
       System.out.println(k);
     }
+  }
+  
+  /**
+   * Returns a search string to input in a google search link.
+   * @return String that will be input at the end of a google link to search it
+   */
+  public String getSearchString() {
+    String result = "";
+    getKeywords();
+    if (!keywords.isEmpty()) {
+      result = keywords.get(0);
+      if (keywords.size() > 2) {
+        for (int i = 1; i < keywords.size(); i++) {
+          result += "+" + keywords.get(i);
+        }
+      }
+    }
+    return result;
   }
   
   /**
