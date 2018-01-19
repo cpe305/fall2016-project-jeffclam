@@ -76,12 +76,12 @@ public class ControllerFactory {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/Result.fxml"));
     Parent root = loader.load();
     Stage stage = new Stage();
-    stage.setScene(new Scene(root, 800, 600));
+    stage.setScene(new Scene(root, 800, 800));
     stage.show();
     stage.setOnCloseRequest((new EventHandler<WindowEvent>() {
       @Override
       public void handle(WindowEvent arg0) {
-        Platform.exit();
+        //Platform.exit();
       }
       
     }));

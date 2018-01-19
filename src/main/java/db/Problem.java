@@ -6,8 +6,8 @@ import java.util.TreeMap;
 
 public class Problem {
   private String statement;
-  private ArrayList<String> selfPronouns;
-  private ArrayList<String> otherPronouns;
+  //private ArrayList<String> selfPronouns;
+  //private ArrayList<String> otherPronouns;
   private ArrayList<String> keywords;
   private TreeMap<String, String> pronouns = 
       new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
@@ -61,7 +61,7 @@ public class Problem {
    */
   public String getSearchString() {
     String result = "";
-    printKeywords();
+    getKeywords();
     if (!keywords.isEmpty()) {
       result = keywords.get(0);
       if (keywords.size() > 2) {

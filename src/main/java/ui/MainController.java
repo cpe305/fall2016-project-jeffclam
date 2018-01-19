@@ -30,6 +30,7 @@ public class MainController {
       addMood = (AddMoodController) factory.launch("add");
       addMood.setCommunication(this);
       addMood.setMood(userInput.getText());
+      mood = new Mood(userInput.getText());
     } else {
       reactToMood(mood);
     }
@@ -87,8 +88,7 @@ public class MainController {
     WebEngine webEngine = result.web.getEngine();
     if (problem != null) {
       searchInput = mood.getKeyword() + "+" + problem.getSearchString();
-      System.out.println(searchInput);
-      webEngine.load("http://www.google.com/search?q=" + searchInput);
+      webEngine.load("https://duckduckgo.com/?q=" + searchInput);
     } else {
       webEngine.load("http://www.google.com");
     }
